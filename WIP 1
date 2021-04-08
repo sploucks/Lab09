@@ -1,0 +1,214 @@
+/*****************************************************************************
+ * 
+ *  Programmers and Purdue Email Addresses:
+ *  1. jone1890@purdue.edu
+ *  2. louckss@purdue.edu
+ *  3. jense105@purdue.edu
+ *  
+ *  Lab #: 09
+ *  
+ *  Academic Integrity Statement:
+ *  
+ *  We have not used source code obtained from any other unauthorized source,
+ *  either modified or unmodified.  Neither have we provided access to our code
+ *  to another. The effort we are submitting is our own original work.
+ *  
+ *  Day, Time, Location of Lab: Thursday, 3:30-4:20, Hampton 3314
+ *  
+ *  Program Description:
+ *  program does some disgusting thing to turn all of the even values in an
+ *  array into octal numbers and all of the odd values in an array to binary
+ *  numbers.
+ *  
+ * ***************************************************************************/
+
+#include <stdio.h>
+#include <math.h>
+
+#define NUMELEM 20
+
+void userInput();
+int oddEvenCalc();
+int parityCalc();
+int getDigits();
+int octalConv();
+int binaryConv();
+
+int main()
+{
+  int values[NUMELEM];
+  
+  userInput();
+  oddEvenCalc(values[]);
+  
+  return 0;
+}
+
+/***************************************************************************
+ * *
+ * *  Function Information
+ * *
+ * *  Name of Function: userInput
+ * *
+ * *  Function Return Type: void
+ * *
+ * *  Parameters (list data type, name, and comment one per line): N/A
+ * *
+ * *  Function Description:
+ * *  Function takes user input for the each array element.
+ * *
+ * ***************************************************************************/
+
+void userInput()
+{
+  printf("Enter 20 integer values -> ");
+  
+  for (i = 0; i < NUMELEM; ++i)
+  {
+		scanf("%d",&values[i]);
+	}
+}
+
+/***************************************************************************
+ * *
+ * *  Function Information
+ * *
+ * *  Name of Function: oddEvenCalc
+ * *
+ * *  Function Return Type: int
+ * *
+ * *  Parameters (list data type, name, and comment one per line): 
+ * *
+ * *  Function Description:
+ * *  Function takes user input for the each array element.
+ * *
+ * ***************************************************************************/
+
+int oddEvenCalc(int values[])
+{
+  int count;
+  int digits;
+  //might have to convert this function into two, one for even and one for odd
+  
+  for (count = 0; count < NUMELEM; count++)
+  {
+    if (values[count] % 2 == 0) //even elements
+    {
+      digits = getDigits(values[NUMELEM]);
+      octalConv(values[], digits);
+      //print converted even numbers
+    }
+    else //odd elements
+    {
+      digits = getDigits(values[NUMELEM]);
+      binaryConv(values[], digits);
+      //print converted even numbers
+    }
+  }
+  return(length);  
+}
+
+/***************************************************************************
+ * *
+ * *  Function Information
+ * *
+ * *  Name of Function: getDigits
+ * *
+ * *  Function Return Type: int
+ * *
+ * *  Parameters (list data type, name, and comment one per line):
+ * *   1.int decimalVal - decimal value given by user
+ * *
+ * *  Function Description:
+ * *  Function takes user input for the decimal input and returns number of digits for that value
+ * *
+ * ***************************************************************************/
+
+int getDigits(int values[])
+{
+  int count; //declares variable for count in upcoming while loop
+	int length;
+  int val;
+  
+  length = 0;
+  
+  for (count = 0; count < NUMELEM; count++)
+  {
+    val = values[ count ];
+  	while (val != 0)
+  	{
+    	val /= 10;
+    	++length;
+  	}
+  }
+  return(length);
+}
+
+/***************************************************************************
+ * *
+ * *  Function Information
+ * *
+ * *  Name of Function: octalConv
+ * *
+ * *  Function Return Type: int
+ * *
+ * *  Parameters (list data type, name, and comment one per line):
+ * *   1.int decVal - decimal value given by user
+ * *   2.int digits - number of digits in the decimal value
+ * *
+ * *  Function Description:
+ * *  Function takes user input for the decimal input and converts to octal
+ * *
+ * ***************************************************************************/
+
+int octalConv(int values[], int digits)
+{
+  int quotient; //declares variable for the quotient in the following calculations
+  int count; //count for run times of the upcoming while loop
+  int remain; //stores the value for the remainder
+  int result; //stores value for the new octal conversion number
+
+  result = 0;
+  count = 0;
+
+  do
+  {
+    quotient = decVal / 8;
+    remain = decVal % 8;
+    result += remain * pow(10,count);
+    decVal = quotient;
+    ++count;
+  }while (count <= digits);
+
+  return(result);
+}
+
+/***************************************************************************
+ * *
+ * *  Function Information
+ * *
+ * *  Name of Function: toBinaryCalc
+ * *
+ * *  Function Return Type: void
+ * *
+ * *  Parameters (list data type, name, and comment one per line):
+ * *   1.
+ * *   2.
+ * *
+ * *  Function Description:
+ * *  This function taks the odd values in the array and converts them to a binary number.
+ * *
+ * ***************************************************************************/
+
+void toBinaryCalc (int oddValues[], int oddNum)
+{
+  int i = 0;
+
+  while (oddNum > 0)
+  { 
+    oddValues[i] = oddNum % 2;
+    oddNum = n / 2;
+    i++;
+} 
+//PRETTY SURE THIS SHOULD WORK BUT MIGHT HAVE TO CHANGE SINCE IT USES ARRAYS
+
